@@ -1,4 +1,4 @@
-import { Action } from "../actions/index"
+import { Action, ActionType } from "../actions/index"
 
 export interface MyState {
     items: any;
@@ -12,14 +12,26 @@ export const reducer = (
     action: Action
   ) => {
   switch(action.type){
-    case "RECEIVED": {
+    case ActionType.ALL : {
       state.items = action.payload;
-      console.log(state.items)
+      console.log('all', state.items)
       return {items: action.payload};
     }
-    // case "ADD": {
-    //   return {...state};
-    // }
+    case ActionType.MANUAL : {
+      state.items = action.payload;
+      console.log('manual', state.items)
+      return {items: action.payload};
+    }
+    case ActionType.TWITTER : {
+      state.items = action.payload;
+      console.log('twitter', state.items)
+      return {items: action.payload};
+    }
+    case ActionType.INSTA : {
+      state.items = action.payload;
+      console.log('insta', state.items)
+      return {items: action.payload};
+    }
     default:
       return state
   }

@@ -1,21 +1,37 @@
-enum ActionType {
-    GET = 'GET',
-    RECEIVED = 'RECEIVED'
+export enum ActionType {
+    ALL = 'ALL',
+    MANUAL = 'MANUAL',
+    TWITTER = 'TWITTER',
+    INSTA = 'INSTA'
 }
-interface getData {
-    type: ActionType.GET; payload: object;
+interface allData {
+    type: ActionType.ALL; payload: object;
 }
-interface addData {
-    type: ActionType.RECEIVED; payload: object;
+interface manualData {
+    type: ActionType.MANUAL; payload: object;
 }
-export type Action = getData | addData;
+interface twitterData {
+    type: ActionType.TWITTER; payload: object;
+}
+interface instaData {
+    type: ActionType.INSTA; payload: object;
+}
+export type Action = allData | manualData | twitterData | instaData;
 
 
-export const addData = (items: object[]): Action => ({
-    type: ActionType.RECEIVED,
+export const allData = (items: object[]): Action => ({
+    type: ActionType.ALL,
     payload: items
 })
-export const getData = (items: object[]): Action => ({
-    type: ActionType.GET,
+export const manualData = (items: object[]): Action => ({
+    type: ActionType.MANUAL,
+    payload: items
+})
+export const twitterData = (items: object[]): Action => ({
+    type: ActionType.TWITTER,
+    payload: items
+})
+export const instaData = (items: object[]): Action => ({
+    type: ActionType.INSTA,
     payload: items
 })

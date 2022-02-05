@@ -4,9 +4,10 @@ import { RootState } from '../../store';
 type Props = {
     
 }
-const Button = ({}: Props) => {
+const Image = ({}: Props) => {
     return (
         <div>
+            card image
         </div>
     )
 }
@@ -14,4 +15,4 @@ const Button = ({}: Props) => {
 const mapStateToProps = (state: RootState) => ({
     // reducer: state.reducer
 })
-export default connect(mapStateToProps)(Button)
+export default connect(mapStateToProps)(Image)

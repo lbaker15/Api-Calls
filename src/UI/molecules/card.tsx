@@ -1,12 +1,17 @@
 import { connect } from "react-redux"
 import { RootState } from '../../store';
+import Image from '../atoms/image';
+import Text from '../atoms/text';
 
 type Props = {
     
 }
-const Button = ({}: Props) => {
+const Card = ({}: Props) => {
     return (
         <div>
+            card
+            <Image />
+            <Text />
         </div>
     )
 }
@@ -14,4 +19,4 @@ const Button = ({}: Props) => {
 const mapStateToProps = (state: RootState) => ({
     // reducer: state.reducer
 })
-export default connect(mapStateToProps)(Button)
+export default connect(mapStateToProps)(Card)
