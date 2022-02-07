@@ -18,7 +18,7 @@ const Card = ({reducer, type, item}: Props) => {
             let app_id = 1796391010517069;
             let redirect_url = 'https://threeeightthree.herokuapp.com/'
             fetch(`https://api.instagram.com/oauth/authorize?client_id=${app_id}&redirect_url=${redirect_url}&scope=user_media&response=code`, {
-                mode: 'cors'
+
             })
             .then(res => console.log(res))
         } else if (type === 'manual') {
@@ -31,7 +31,7 @@ const Card = ({reducer, type, item}: Props) => {
         }
     }, [])
     if (type === 'instagram') {
-        // console.log(item)
+        console.log(item)
         return (
             <div>
                 instagram
