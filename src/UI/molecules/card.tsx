@@ -5,8 +5,6 @@ import { Reducer, Data, Item } from "../../types";
 import Image from '../atoms/image';
 import Text from '../atoms/text';
 
-//1796391010517069
-//55c014b93b57e699e6a49cc27f49645f
 
 type Props = {
     reducer: Reducer,
