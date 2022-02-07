@@ -1,10 +1,12 @@
 import { Action, ActionType } from "../actions/index"
 
 export interface MyState {
-    items: any;
+    value: string;
+    all: object[];
 }
 const initialState = {
-    items: [],
+    value: 'all',
+    all: []
 }
 
 export const reducer = (
@@ -13,24 +15,20 @@ export const reducer = (
   ) => {
   switch(action.type){
     case ActionType.ALL : {
-      state.items = action.payload;
-      console.log('all', state.items)
-      return {items: action.payload};
+      return {...state, all: action.payload};
     }
     case ActionType.MANUAL : {
-      state.items = action.payload;
-      console.log('manual', state.items)
-      return {items: action.payload};
+      return {...state, manual: action.payload};
     }
     case ActionType.TWITTER : {
-      state.items = action.payload;
-      console.log('twitter', state.items)
-      return {items: action.payload};
+      return {...state, twitter: action.payload};
     }
     case ActionType.INSTA : {
-      state.items = action.payload;
-      console.log('insta', state.items)
-      return {items: action.payload};
+      return {...state, instagram: action.payload};
+    }
+    case ActionType.VALUE : {
+      // console.log(state, action)
+      return {...state, value: action.payload};
     }
     default:
       return state

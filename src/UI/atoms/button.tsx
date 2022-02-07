@@ -1,14 +1,19 @@
+import React from "react";
 import { connect } from "react-redux"
 import { RootState } from '../../store';
 
 type Props = {
-    
+    onClick: (e:React.MouseEvent<HTMLButtonElement>) => void;
+    value: string;
 }
-const Button = ({}: Props) => {
+const Button = ({onClick, value}: Props) => {
     return (
-        <div>
-            button
-        </div>
+        <React.Fragment>
+            <button
+            onClick={onClick}
+            value={value}
+            >{value}</button>
+        </React.Fragment>
     )
 }
 

@@ -2,7 +2,8 @@ export enum ActionType {
     ALL = 'ALL',
     MANUAL = 'MANUAL',
     TWITTER = 'TWITTER',
-    INSTA = 'INSTA'
+    INSTA = 'INSTA',
+    VALUE = 'VALUE'
 }
 interface allData {
     type: ActionType.ALL; payload: object;
@@ -16,7 +17,10 @@ interface twitterData {
 interface instaData {
     type: ActionType.INSTA; payload: object;
 }
-export type Action = allData | manualData | twitterData | instaData;
+interface Value {
+    type: ActionType.VALUE, payload: string
+}
+export type Action = allData | Value | manualData | twitterData | instaData;
 
 
 export const allData = (items: object[]): Action => ({
@@ -34,4 +38,8 @@ export const twitterData = (items: object[]): Action => ({
 export const instaData = (items: object[]): Action => ({
     type: ActionType.INSTA,
     payload: items
+})
+export const setType = (value: string): Action => ({
+    type: ActionType.VALUE,
+    payload: value
 })

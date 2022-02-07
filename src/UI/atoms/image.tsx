@@ -2,12 +2,12 @@ import { connect } from "react-redux"
 import { RootState } from '../../store';
 
 type Props = {
-    
+    src: string
 }
-const Image = ({}: Props) => {
+const Image = ({src}: Props) => {
     return (
         <div>
-            card image
+            <img src={src} />
         </div>
     )
 }

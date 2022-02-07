@@ -4,9 +4,10 @@ import { allData, manualData, twitterData, instaData }from '../actions/index';
 import { useEffect } from 'react';
 import { RootState } from '../store';
 import DashboardTemp from '../templates/dashboard';
+import {Reducer} from '../types';
 
 type Props = {
-    reducer: {items: object[]}
+    reducer: Reducer
 }
 type IndividualItem = {
     service_name: string,
