@@ -3,10 +3,11 @@ export type Reducer = {
 }
 export type Data = {
     image?: any,
+    link?: any,
     image_url?: any
 }
 export type Item = {
     item_data: Data,
     service_slug: any,
-    item_id: number
+    item_id: number,
 }
