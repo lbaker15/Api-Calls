@@ -15,12 +15,7 @@ type Props = {
 const Card = ({reducer, type, item}: Props) => {
     useEffect(() => {
         if (type === 'instagram') {
-            let app_id = 1796391010517069;
-            let redirect_url = 'https://threeeightthree.herokuapp.com/'
-            fetch(`https://api.instagram.com/oauth/authorize?client_id=${app_id}&redirect_url=${redirect_url}&scope=user_media&response=code`, {
 
-            })
-            .then(res => console.log(res))
         } else if (type === 'manual') {
             // console.log('here')
             // fetch(item.item_data.image_url, {
