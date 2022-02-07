@@ -16,7 +16,7 @@ type IndividualItem = {
 const Dashboard = ({reducer}: Props) => {
     let dispatch = useDispatch();
     useEffect(() => {
-       fetch('http://private-cc77e-aff.apiary-mock.com/posts')
+       fetch('https://private-cc77e-aff.apiary-mock.com/posts')
        .then(res => res.json())
        .then(data => {
            const {items} = data;
