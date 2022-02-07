@@ -18,9 +18,10 @@ const Card = ({reducer, type, item}: Props) => {
         if (type === 'instagram') {
             console.log(item.item_data.link)
             //https://api.instagram.com/oembed/?url=https://www.instagram.com/p/szVeWDh17P/
-            fetch(`https://three83-backend.herokuapp.com/proxy?url=https://api.instagram.com/oembed/?url=${item.item_data.link}`, {
-                'mode': 'cors',
-                'method': 'GET',
+            fetch(`https://cors-anywhere.herokuapp.com/https://api.instagram.com/oembed/?url=${item.item_data.link}`, {
+                // 'mode': 'cors',
+                // 'method': 'GET',
+                headers:{'X-Requested-With': 'browser'}
             })
             .then(res => console.log(res))
         } else if (type === 'manual') {
