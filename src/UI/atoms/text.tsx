@@ -2,12 +2,16 @@ import { connect } from "react-redux"
 import { RootState } from '../../store';
 
 type Props = {
-    
+    text: string,
+    link: boolean,
+    url?: string,
+    strong?: boolean
 }
-const Text = ({}: Props) => {
+const Text = ({text, link, url, strong}: Props) => {
+    const bold = (strong) ? 'text-bold' : ''
     return (
-        <div>
-            card text
+        <div className={link ? `text-link ${bold}` : `${bold}`}>
+           {link ? <a href={url}>{text}</a> : <p>{text}</p>}
         </div>
     )
 }

@@ -14,8 +14,9 @@ const Grid = ({reducer}: Props) => {
             <a href="https://three83-backend.herokuapp.com/fbLogin">Login</a>
             
             {reducer[value] && 
-            reducer[value].map((item: Item) => {
-                return <Card key={item.item_id} item={item} type={item.service_slug} />
+            reducer[value].map((item: Item, i: number) => {
+                // console.log('HERE', item.item_id)
+                return <Card key={item.item_id + i} item={item} type={item.service_slug} />
             })}
         </div>
     )
