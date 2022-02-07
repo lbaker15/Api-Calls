@@ -18,7 +18,7 @@ const Card = ({reducer, type, item}: Props) => {
         if (type === 'instagram') {
             console.log(item.item_data.link)
             //https://api.instagram.com/oembed/?url=https://www.instagram.com/p/szVeWDh17P/
-            fetch(`https://api.instagram.com/oembed/?url=${item.item_data.link}`, {
+            fetch(`https://three83-backend.herokuapp.com/proxy?url=https://api.instagram.com/oembed/?url=${item.item_data.link}`, {
                 'mode': 'cors',
                 'method': 'GET',
             })
@@ -38,10 +38,10 @@ const Card = ({reducer, type, item}: Props) => {
                 {/* instagram */}
                 {/* <Image src={item.item_data.image.large} /> */}
                 {/* <Text /> */}
-                {item.item_data.link}
+                {/* {item.item_data.link}
                 APP ID: 1796391010517069
                 CLIENT ID: 131ba3b7cf4139cb7493f8cb6ffc5651
-                ACCESS: EAAZAhzuAPQE0BAIAZCywMU0UAAyIdQ4LQr7ZBP6cuc19O7N010EpmGnCBZASvkKAmCUH1bY3J5So5oTDp6zUGvFkGSOHd1ud3R36zAvSrUaNuDSWtMirxHJxhBStqIS6zexw8AefuBJmIUHdsQvIbTdUDw98dmcJ7xIZB7s6ZAvs8kgLr2xXPIeGl1qG1ZBdxL7gf00FcKPOIijBWscgeZBZBqYUl5YaQefMCZBG9aOFopSX8kWiqycXEp7eEBD7UWxWoZD
+                ACCESS: EAAZAhzuAPQE0BAIAZCywMU0UAAyIdQ4LQr7ZBP6cuc19O7N010EpmGnCBZASvkKAmCUH1bY3J5So5oTDp6zUGvFkGSOHd1ud3R36zAvSrUaNuDSWtMirxHJxhBStqIS6zexw8AefuBJmIUHdsQvIbTdUDw98dmcJ7xIZB7s6ZAvs8kgLr2xXPIeGl1qG1ZBdxL7gf00FcKPOIijBWscgeZBZBqYUl5YaQefMCZBG9aOFopSX8kWiqycXEp7eEBD7UWxWoZD */}
                 <InstagramEmbed 
                 clientAccessToken="131ba3b7cf4139cb7493f8cb6ffc5651"
                 url={String(item.item_data.link)}
@@ -55,7 +55,7 @@ const Card = ({reducer, type, item}: Props) => {
                     console.log('success')
                 }}
                 onAfterRender={() => {}}
-                onFailure={() => {}}/>
+                onFailure={() => {}} />
             </div>
         )
     } else if (type === 'twitter') {
