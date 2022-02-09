@@ -1,8 +1,9 @@
 import { connect } from "react-redux"
 import { RootState } from '../../store';
 import Text from '../atoms/text';
-import ImageNone from '../../assets/na.png';
 import Image from '../atoms/image';
+import { getTimestamp } from "./helperFunctions";
+
 
 type Props = {
     item: any,
@@ -11,18 +12,11 @@ type Props = {
 }
 const Manual = ({item, imageLoaded, image}: Props) => {
  const {item_data} = item;
- let d1 = new Date(item.timestamp);
-        let d2 = new Date(Date.now());
-        let yearDiff = (d2.getFullYear() - d1.getFullYear())
-        let monthDiff = (d2.getMonth() - d1.getMonth())
-        let dayDiff = d2.getDay() - d1.getDay()
-        let hourDiff = d2.getHours() - d1.getHours()
-        let diff = (yearDiff > 0) ? yearDiff : (monthDiff > 0) ? monthDiff : (dayDiff) ? dayDiff : hourDiff;
-        let diffStr = (yearDiff > 0) ? ' years ago' : (monthDiff > 0) ? ' months ago' : (dayDiff) ? ' days ago' : ' hours ago';
+ const {diff, diffStr}= getTimestamp(item.timestamp)
  return (
      <div className="manual_block block">
          {image && 
-         <Image classes="block__image" src={image}
+         <Image classes="holder-img__image" src={image}
          placeholderImg="https://via.placeholder.com/400x200.png?text=This+Will+Be+Shown+Before+Load" />
          }
          <Text link={false} classes="block__timestamp" text={diff + diffStr}></Text>

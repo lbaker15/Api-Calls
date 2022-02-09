@@ -18,16 +18,17 @@ export const reducer = (
       return {...state, all: action.payload};
     }
     case ActionType.MANUAL : {
+      console.log('man')
       return {...state, manual: action.payload};
     }
     case ActionType.TWITTER : {
       return {...state, twitter: action.payload};
     }
     case ActionType.INSTA : {
+      console.log('insta')
       return {...state, instagram: action.payload};
     }
     case ActionType.VALUE : {
-      // console.log(state, action)
       return {...state, value: action.payload};
     }
     case ActionType.NUMBER : {

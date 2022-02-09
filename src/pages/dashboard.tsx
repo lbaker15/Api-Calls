@@ -1,7 +1,7 @@
 import {connect, useDispatch} from 'react-redux';
-import { Dispatch } from 'redux';
+import Loader from '../UI/atoms/loader';
 import { allData, manualData, twitterData, instaData }from '../actions/index';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { RootState } from '../store';
 import DashboardTemp from '../templates/dashboard';
 import {Reducer} from '../types';
@@ -14,6 +14,7 @@ type IndividualItem = {
     item_published: string
 }
 const Dashboard = ({reducer}: Props) => {
+    const [load, setLoad] = useState(true)
     let dispatch = useDispatch();
     useEffect(() => {
        fetch('https://private-cc77e-aff.apiary-mock.com/posts')
@@ -21,44 +22,56 @@ const Dashboard = ({reducer}: Props) => {
        .then(data => {
            const {items} = data;
            if (items) {
-               //ADD PROMISES
                let manualArr = new Array; let instaArr = new Array; let twitterArr = new Array;
-               let arr = items.map((item: IndividualItem) => {
+               Promise.all(
+                   items.map((item: IndividualItem) => {
                    let timestamp = Date.parse(item.item_published)
                    let newItem = {...item, timestamp}
                    return newItem;
-               })
-               let timeOrderArr = arr.sort((a:any, b:any) => {
-                   return b.timestamp - a.timestamp;
-                });
-               timeOrderArr.map((a: IndividualItem) => {
-                   if (a.service_name === 'Manual') {
-                    manualArr.push(a)
-                    manualArr.push(a)
-                   } else if (a.service_name === 'Instagram') {
-                    instaArr.push(a)
-                    instaArr.push(a)
-                   } else if (a.service_name === 'Twitter') {
-                    twitterArr.push(a)
-                    twitterArr.push(a)
-                   } 
-               })
-               let newArr = [timeOrderArr, timeOrderArr].flat()
-               dispatch(allData(newArr))
-               dispatch(manualData(manualArr))
-               dispatch(twitterData(twitterArr))
-               dispatch(instaData(instaArr))
-               //AFTER FINAL DISPATCH TURN OFF LOADER
-
+               })).then((arr) => {
+                    let timeOrderArr = arr.sort((a:any, b:any) => {
+                        return b.timestamp - a.timestamp;
+                    })
+                    Promise.all(
+                        timeOrderArr.map((a: IndividualItem) => {
+                            if (a.service_name === 'Manual') {
+                             manualArr.push(a)
+                             manualArr.push(a)
+                            } else if (a.service_name === 'Instagram') {
+                             instaArr.push(a)
+                             instaArr.push(a)
+                            } else if (a.service_name === 'Twitter') {
+                             twitterArr.push(a)
+                             twitterArr.push(a)
+                            } 
+                        })
+                    ).then(() => {
+                        let newArr = [timeOrderArr, timeOrderArr].flat()
+                        // setTimeout(() => {
+                        dispatch(allData(newArr))
+                        dispatch(manualData(manualArr))
+                        dispatch(twitterData(twitterArr))
+                        dispatch(instaData(instaArr))
+                        // }, 5000)
+                    })
+               })        
            }
         })
     }, [dispatch])
+    useEffect(() => {
+        if (reducer.all.length > 0 && reducer.instagram && reducer.twitter && reducer.manual) {
+            setLoad(false)
+        }
+    }, [reducer.all, reducer.instagram, reducer.twitter, reducer.manual])
     return (
         <div>
-            {reducer.all.length && reducer.twitter && reducer.instagram && reducer.manual ?
+            {!load ?
             <DashboardTemp />
             :
-            <div>Loading</div>
+            <div className="w-full h-full flex-col">
+            <Loader color="black" />
+            <p className="mt-6">Loading posts...</p>
+            </div>
             }
         </div>
     )

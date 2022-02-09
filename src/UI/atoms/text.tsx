@@ -14,7 +14,13 @@ const Text = ({text, link, url, strong, classes}: Props) => {
     const bold = (strong) ? 'text-bold' : ''
     return (
         <React.Fragment>
-           {link ? <a className={`text-link ${bold} ${classes}`} href={url}>{text}</a> : <p className={`${bold} ${classes}`}>{text}</p>}
+           {link ? 
+           <a
+           target="_blank" 
+           className={`text-link ${bold} ${classes}`} 
+           href={url}>
+               {text}
+            </a> : <p className={`${bold} ${classes}`}>{text}</p>}
         </React.Fragment>
     )
 }
