@@ -1,18 +1,21 @@
+import React from "react";
 import { connect } from "react-redux"
 import { RootState } from '../../store';
+
 
 type Props = {
     text: string,
     link: boolean,
     url?: string,
-    strong?: boolean
+    strong?: boolean,
+    classes?: string
 }
-const Text = ({text, link, url, strong}: Props) => {
+const Text = ({text, link, url, strong, classes}: Props) => {
     const bold = (strong) ? 'text-bold' : ''
     return (
-        <div className={link ? `text-link ${bold}` : `${bold}`}>
-           {link ? <a href={url}>{text}</a> : <p>{text}</p>}
-        </div>
+        <React.Fragment>
+           {link ? <a className={`text-link ${bold} ${classes}`} href={url}>{text}</a> : <p className={`${bold} ${classes}`}>{text}</p>}
+        </React.Fragment>
     )
 }
 

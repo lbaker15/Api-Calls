@@ -1,6 +1,109 @@
+$grey: rgb(100, 100, 100);
+$lightGrey: rgb(201, 201, 201);
+$red: red;
+$textPadding: 5px 0px;
+
 .flex {
     display: flex;
 }
+.container {
+    margin: 3rem 0;
+    width: 90%; margin-right: auto;
+    margin-left: auto;
+}
 .text-bold {
     font-weight: 600;
+}
+.h-auto {
+    height: auto;
+    margin-top: 0; margin-bottom: 0%;
+}
+.text-link {
+    color: $red;
+    font-weight: 500;
+    text-decoration: none;
+    padding: $textPadding;
+}
+p {
+   margin: $textPadding;
+}
+.w-full {
+    width: 100%;
+    display: flex; justify-content: center;
+}
+.btn {
+    padding: 10px 20px;
+    background: black;
+    color: white;
+    border: none;
+}
+
+
+.load_btn {
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    margin-top: 2.5rem;
+}
+.grid {
+    display: flex; flex-wrap: wrap;
+    width: 100%; gap: 25px;
+    justify-content: center;
+}
+.filter_btns {
+    display: flex; justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+.filter_btns__btn {
+   
+}
+.block {
+    max-width: 300px;
+    font-family: Roboto;
+    color: $grey;
+    padding: 25px 20px 50px 20px;
+    border: 1px solid $lightGrey;
+    display: flex; flex-direction: column;
+}
+.block__image {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.block__icon {
+    width: 50px;
+    position: absolute;
+    margin-top: -20px;
+    margin-left: -15px;
+    border-radius: 8px;
+}
+.block__timestamp {
+    color:rgb(155, 155, 155);
+}
+.instagram_block {
+    
+}
+.instagram_block__text {
+    width: 100%;
+}
+.instagram_block__hashtags {
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 2px;
+    padding: $textPadding;
+    color: $red;
+}
+.twitter_block {
+    text-align: center;
+}
+.twitter_block__text {
+    width: 90%;
+    margin-left: auto; margin-right: auto;
+}
+.twitter_block__main {
+    width: 90%;
+    padding: $textPadding;
+    margin-left: auto; margin-right: auto;
 }

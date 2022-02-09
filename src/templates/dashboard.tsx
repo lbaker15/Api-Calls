@@ -8,7 +8,7 @@ type Props = {
 }
 const DashboardTemp = ({}: Props) => {
     return (
-        <div>
+        <div className="container">
             <FilterBtns />
             <Grid />
         </div>

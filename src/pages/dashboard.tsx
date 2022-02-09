@@ -23,7 +23,6 @@ const Dashboard = ({reducer}: Props) => {
            if (items) {
                //ADD PROMISES
                let manualArr = new Array; let instaArr = new Array; let twitterArr = new Array;
-            //    console.log(items)
                let arr = items.map((item: IndividualItem) => {
                    let timestamp = Date.parse(item.item_published)
                    let newItem = {...item, timestamp}
@@ -35,13 +34,17 @@ const Dashboard = ({reducer}: Props) => {
                timeOrderArr.map((a: IndividualItem) => {
                    if (a.service_name === 'Manual') {
                     manualArr.push(a)
+                    manualArr.push(a)
                    } else if (a.service_name === 'Instagram') {
+                    instaArr.push(a)
                     instaArr.push(a)
                    } else if (a.service_name === 'Twitter') {
                     twitterArr.push(a)
-                   } else {}
+                    twitterArr.push(a)
+                   } 
                })
-               dispatch(allData(timeOrderArr))
+               let newArr = [timeOrderArr, timeOrderArr].flat()
+               dispatch(allData(newArr))
                dispatch(manualData(manualArr))
                dispatch(twitterData(twitterArr))
                dispatch(instaData(instaArr))
@@ -52,7 +55,11 @@ const Dashboard = ({reducer}: Props) => {
     }, [dispatch])
     return (
         <div>
+            {reducer.all.length && reducer.twitter && reducer.instagram && reducer.manual ?
             <DashboardTemp />
+            :
+            <div>Loading</div>
+            }
         </div>
     )
 }

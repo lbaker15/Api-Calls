@@ -30,6 +30,9 @@ export const reducer = (
       // console.log(state, action)
       return {...state, value: action.payload};
     }
+    case ActionType.NUMBER : {
+      return {...state, number: action.payload}
+    }
     default:
       return state
   }

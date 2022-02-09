@@ -13,11 +13,11 @@ const FilterBtns = ({}: Props) => {
         dispatch(setType(t.value))
     }  
     return (
-        <div>
-            <Button onClick={handleClick} value={'all'} />
-            <Button onClick={handleClick} value={'manual'} />
-            <Button onClick={handleClick} value={'twitter'}  />
-            <Button onClick={handleClick} value={'instagram'}  />
+        <div className="filter_btns">
+            <Button classes="filter_btns__btn btn" onClick={handleClick} value={'all'} />
+            <Button classes="filter_btns__btn btn" onClick={handleClick} value={'manual'} />
+            <Button classes="filter_btns__btn btn" onClick={handleClick} value={'twitter'}  />
+            <Button classes="filter_btns__btn btn" onClick={handleClick} value={'instagram'}  />
         </div>
     )
 }

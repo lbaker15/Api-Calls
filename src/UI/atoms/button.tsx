@@ -5,11 +5,13 @@ import { RootState } from '../../store';
 type Props = {
     onClick: (e:React.MouseEvent<HTMLButtonElement>) => void;
     value: string;
+    classes?: string;
 }
-const Button = ({onClick, value}: Props) => {
+const Button = ({onClick, value, classes}: Props) => {
     return (
         <React.Fragment>
             <button
+            className={classes ? classes : ''}
             onClick={onClick}
             value={value}
             >{value}</button>
