@@ -1,0 +1,54 @@
+.block {
+    max-width: 300px;
+    font-family: Roboto;
+    color: $grey;
+    padding: 25px 20px 40px 20px;
+    border-radius: 6px;
+    // border: 1px solid $lightGrey;
+    box-shadow: 2px 2px 8px $lightGrey;
+    display: flex; flex-direction: column;
+}
+.block__image {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.block__icon {
+    width: 50px;
+    position: absolute;
+    margin-top: -16px;
+    margin-left: -12px;
+    border-radius: 8px;
+}
+.block__timestamp {
+    color:rgb(155, 155, 155);
+}
+.instagram_block {
+    
+}
+.instagram_block__text {
+    width: 100%;
+}
+.instagram_block__hashtags {
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 2px;
+    padding: $textPadding;
+    color: $red;
+}
+.twitter_block {
+    text-align: center;
+}
+.twitter_block__text {
+    width: 90%;
+    margin-left: auto; margin-right: auto;
+}
+.twitter_block__main {
+    width: 90%;
+    padding: $textPadding;
+    margin-left: auto; margin-right: auto;
+}
+.twitter_block__main a {
+    text-decoration: none;
+}

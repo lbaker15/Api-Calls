@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 import { RootState } from '../../store';
 import Text from '../atoms/text';
-import { getTimestamp } from "./helperFunctions";
+import { getTimestamp } from "../../helperFunctions";
 import Image from '../atoms/image';
 import Insta from '../../assets/insta.png'; 
 

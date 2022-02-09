@@ -4,7 +4,7 @@ import { RootState } from '../../store';
 import Text from '../atoms/text';
 import Tweet from '../atoms/tweet';
 import TwitterIcon from '../../assets/twitter.png'; 
-import { getTimestamp } from "./helperFunctions";
+import { getTimestamp } from "../../helperFunctions";
 
 type Props = {
     item: any

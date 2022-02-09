@@ -2,7 +2,7 @@ import { connect } from "react-redux"
 import { RootState } from '../../store';
 import Text from '../atoms/text';
 import Image from '../atoms/image';
-import { getTimestamp } from "./helperFunctions";
+import { getTimestamp } from "../../helperFunctions";
 
 
 type Props = {

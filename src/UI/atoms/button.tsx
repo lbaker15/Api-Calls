@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useRef} from "react";
 import { connect } from "react-redux"
 import { RootState } from '../../store';
+import {gsap} from 'gsap';
+import {Capitalize} from '../../helperFunctions';
 
 type Props = {
     onClick: (e:React.MouseEvent<HTMLButtonElement>) => void;
@@ -8,13 +10,27 @@ type Props = {
     classes?: string;
 }
 const Button = ({onClick, value, classes}: Props) => {
+    let ref = useRef(null);
+    let ref2 = useRef(null);
+    const mouseOver = () => {
+        gsap.to(ref2.current, {visibility: 'visible', scale: 1, duration: 0.4})
+    }
+    const mouseOut = () => {
+        gsap.to(ref2.current, {visibility: 'hidden', scale: 0.01, duration: 0.4})
+    }
     return (
         <React.Fragment>
             <button
+            ref={ref}
             className={classes ? classes : ''}
             onClick={onClick}
+            onMouseOver={mouseOver}
+            onMouseOut={mouseOut}
             value={value}
-            >{value}</button>
+            >
+                <span ref={ref2}></span>
+                <p>{Capitalize(value)}</p>
+            </button>
         </React.Fragment>
     )
 }

@@ -24,7 +24,7 @@ const Grid = ({reducer}: Props) => {
     if (number) {
     return (
         <React.Fragment>
-            <div className="grid">    
+            <div className="grid block-padding">    
                 {reducer[value] && 
                 reducer[value].map((item: Item, i: number) => {
                     if (i < reducer.number) {

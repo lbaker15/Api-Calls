@@ -9,3 +9,7 @@ export const getTimestamp = (timestamp: number) => {
     let diffStr = (yearDiff > 0) ? ' years ago' : (monthDiff > 0) ? ' months ago' : (dayDiff) ? ' days ago' : ' hours ago';
     return {diff, diffStr}
 }
+
+export function Capitalize(str:string){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
