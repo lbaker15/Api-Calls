@@ -36,22 +36,24 @@ const Dashboard = ({reducer}: Props) => {
                         timeOrderArr.map((a: IndividualItem) => {
                             if (a.service_name === 'Manual') {
                              manualArr.push(a)
-                             manualArr.push(a)
+                            //  manualArr.push(a)
                             } else if (a.service_name === 'Instagram') {
                              instaArr.push(a)
-                             instaArr.push(a)
+                            //  instaArr.push(a)
                             } else if (a.service_name === 'Twitter') {
                              twitterArr.push(a)
-                             twitterArr.push(a)
+                            //  twitterArr.push(a)
                             } 
                         })
                     ).then(() => {
                         let newArr = [timeOrderArr, timeOrderArr].flat()
-                        // setTimeout(() => {
+                        let doubleManual = [manualArr, manualArr].flat()
+                        let doubleTwitter = [twitterArr, twitterArr].flat()
+                        let doubleInstagram = [instaArr, instaArr].flat()
                         dispatch(allData(newArr))
-                        dispatch(manualData(manualArr))
-                        dispatch(twitterData(twitterArr))
-                        dispatch(instaData(instaArr))
+                        dispatch(manualData(doubleManual))
+                        dispatch(twitterData(doubleTwitter))
+                        dispatch(instaData(doubleInstagram))
                         // }, 5000)
                     })
                })        

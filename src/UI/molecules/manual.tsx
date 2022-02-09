@@ -16,7 +16,9 @@ const Manual = ({item, imageLoaded, image}: Props) => {
  return (
      <div className="manual_block block">
          {image && 
-         <Image classes="holder-img__image" src={image}
+         <Image 
+         type={item.service_name}
+         classes="holder-img__image" src={image}
          placeholderImg="https://via.placeholder.com/400x200.png?text=This+Will+Be+Shown+Before+Load" />
          }
          <Text link={false} classes="block__timestamp" text={diff + diffStr}></Text>

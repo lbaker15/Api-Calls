@@ -3,13 +3,16 @@ import { RootState } from '../../store';
 import {useState, useCallback, useEffect} from 'react';
 import ImageNone from '../../assets/na.png';
 import Loader from "./loader";
+import { Reducer } from "../../types";
 
 type Props = {
     src: string,
     classes?: string,
-    placeholderImg?: any
+    placeholderImg?: any,
+    type: string,
+    reducer: Reducer
 }
-const ImageComponent = ({src, classes, placeholderImg}: Props) => {
+const ImageComponent = ({src, classes, placeholderImg, type, reducer}: Props) => {
     const [imgSrc, setSrc] = useState(placeholderImg || src);
     const [load, setLoad] = useState(true)
     const onLoad = useCallback(() => {
@@ -17,8 +20,8 @@ const ImageComponent = ({src, classes, placeholderImg}: Props) => {
         setLoad(false)
     }, [src]);
     const onError = () => {
-        setSrc(ImageNone)
-        setLoad(false)
+            setSrc(ImageNone)
+            setLoad(false)
     }
     useEffect(() => {
         const img = new Image();
@@ -27,8 +30,10 @@ const ImageComponent = ({src, classes, placeholderImg}: Props) => {
         img.addEventListener("error", onError)
         return () => {
           img.removeEventListener("load", onLoad);
+          img.removeEventListener("error", onError);
         };
     }, [src, onLoad]);
+    console.log(type, reducer.value)
     return (
         <div className="holder-img">
         {load ? <div className="holder-img__load">
@@ -42,6 +47,6 @@ const ImageComponent = ({src, classes, placeholderImg}: Props) => {
 }
 
 const mapStateToProps = (state: RootState) => ({
-    // reducer: state.reducer
+    reducer: state.reducer
 })
 export default connect(mapStateToProps)(ImageComponent)

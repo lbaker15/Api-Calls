@@ -18,7 +18,9 @@ const Instagram = ({item, imageLoaded, image}: Props) => {
             <div className="instagram_block block">
                 <img className="block__icon" src={Insta} />
                 {image && 
-                <Image classes="holder-img__image" 
+                <Image 
+                type={item.service_name}
+                classes="holder-img__image" 
                 placeholderImg="https://via.placeholder.com/400x200.png?text=This+Will+Be+Shown+Before+Load"
                 src={image}
                 />
