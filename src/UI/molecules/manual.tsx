@@ -22,9 +22,7 @@ const Manual = ({item, imageLoaded, image}: Props) => {
  return (
      <div className="manual_block block">
          {image && 
-         <Image classes="block__image" 
-         //src={image}
-         src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Pizigani_1367_Chart_10MB.jpg"
+         <Image classes="block__image" src={image}
          placeholderImg="https://via.placeholder.com/400x200.png?text=This+Will+Be+Shown+Before+Load" />
          }
          <Text link={false} classes="block__timestamp" text={diff + diffStr}></Text>
