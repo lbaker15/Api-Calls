@@ -17,7 +17,11 @@ const Tweet = ({tweet, classes}: Props) => {
             {tweet.map((t, i) => {
                 let str = unescapeHTML(String(t))
                 if (str.includes('@')) {
-                    return <a key={"str" + i}>{str}</a>
+                    return <a className="text-red" key={"str" + i}>{str} </a>
+                } else if (str.includes('#')) {
+                    return <a className="text-red" key={"str" + i}>{str} </a>
+                } else if (str.includes('http://')) {
+                    return <a className="text-red" key={"str" + i}>{str} </a>
                 } else {
                     return str
                 }

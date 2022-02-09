@@ -24,13 +24,14 @@ class Twitter extends React.PureComponent<Props> {
         let count = 0;
         Promise.all(
             tweetArr.map((item: any, i: number) => {
-                if (item.split('').includes('@')) {
+                if (item.split('').includes('@') | item.includes('#') | item.includes('http://')) {
+                    console.log(item)
                     let str = item;
                     count += 2;
                     newArr.push(String(str))
                 } else {
                     let str = (newArr[count]) ? newArr[count] : ''
-                    let add = str + ' ' + item;
+                    let add = str + ' ' + item + ' ';
                     newArr[count] = add;
                 }
             })
